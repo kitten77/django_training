@@ -33,11 +33,10 @@ class Startup(models.Model):
 
     def get_absolute_url(self):
         return reverse('organizer_startup_detail', kwargs={'slug': self.slug})
-        
+
     class Meta:
         ordering = ['name']
         get_latest_by = 'founded_date'
-
 
 class NewsLink(models.Model):
     #foregin keys

@@ -25,6 +25,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', redirect_root),
     url(r'^blog/', include(blog_urls)),
-    url(r'^tag/', include(organizer_urls)),
-    url(r'^startup/', include(organizer_urls)),
+    url(r'^organizer/', include(organizer_urls)),
 ]
