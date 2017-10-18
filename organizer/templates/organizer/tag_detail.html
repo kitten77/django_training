@@ -1,0 +1,40 @@
+{% extends parents_template|default:"organizer/base_organizer.html" %}
+
+{% block title %}
+{{ block.super }} - Tag Detail
+{% endblock %}
+
+{% block content %}
+<h2> {{ tag.name|title }}</h2>
+{% if tag.startup_set.all %}
+  <section>
+    <h3>Startup{{ tag.startup_set.count|pluralize }}</h3>
+      <p>Tag is assciated with
+        {{ tag.startup_set.count }}
+        startup{{ tag.startup_set.count|pluralize }}.
+      </p>
+    <ul>
+      {% for startup in tag.startup_set.all %}
+        <li><a href="{{ startup.get_absolute_url }}">
+          {{ startup.name }}
+        </a></li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+<!-- blog post code -->
+{% if tag.blog_posts.all %}
+  <section>
+      <h3>Blog Post{{ tag.blog_posts.count|pluralize }}</h3>
+      <ul>
+        {% for post in tag.blog_posts.all %}
+          <li><a href="{{ post.get_absolute_url }}"> {{ post.title|title }} </a></li>
+        {% endfor %}
+      </ul>
+  </section>
+{% endif %}
+
+{% if not tag.startup_set.all and not tag.blog_posts.all %}
+  <p> This tag is not here please try again </p>
+{% endif %}
+{% endblock %}

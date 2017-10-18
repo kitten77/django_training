@@ -1,0 +1,87 @@
+{% extends parent_template|default:"blog/base_blog.html" %}
+
+{% block title %}
+{{ block.super }} - {{ post.title|title }}
+{% endblock %}
+
+{% block content %}
+<article>
+
+  <div class="row">
+  <div class="offset-by-two eight columns">
+    <header>
+      <h2>{{ post.title|title }}</h2>
+      {% if perms.blog.change_post or perms.blog.delete_post %}
+      <ul class="inline">
+        {% if perms.blog.change_post %}
+        <li>
+          <a
+              href="{{ post.get_update_url }}"
+              class="button">
+            Edit Post</a></li>
+        {% endif %}
+        {% if perms.blog.delete_post %}
+        <li>
+          <a
+              href="{{ post.get_delete_url }}"
+              class="button">
+            Delete Post</a></li>
+        {% endif %}
+      </ul>
+      {% endif %}
+      <p>
+        Written on
+        <time datetime="{{ post.pub_date|date:"Y-m-d" }}">
+          {{ post.pub_date|date:"l, F j, Y" }}
+        </time>
+        by
+        <a href="{{ post.author.get_absolute_url }}">
+          {{ post.author.profile.name }}</a>
+      </p>
+    </header>
+
+    {{ post.text|linebreaks }}
+  </div></div>
+
+  {% if post.startups.all or post.tags.all %}
+    <footer class="row">
+
+      {% if post.startups.all %}
+        {% if post.tags.all %}
+          <section class="meta offset-by-two one-third column">
+        {% else %}
+          <section class="meta offset-by-two two-thirds column">
+        {% endif %}
+            <h3>Startup{{ post.startups.count|pluralize }}</h3>
+            <ul>
+              {% for startup in post.startups.all %}
+                <li><a href="{{ startup.get_absolute_url }}">
+                  {{ startup.name }}
+                </a></li>
+              {% endfor %}
+            </ul>
+          </section>
+      {% endif %}
+
+      {% if post.tags.all %}
+        {% if post.startups.all %}
+          <section class="meta one-third column">
+        {% else %}
+          <section class="meta offset-by-two two-thirds column">
+        {% endif %}
+            <h3>Tag{{ post.tags.count|pluralize }}</h3>
+            <ul>
+              {% for tag in post.tags.all %}
+                <li><a href="{{ tag.get_absolute_url }}">
+                  {{ tag.name|title }}
+                </a></li>
+              {% endfor %}
+            </ul>
+          </section>
+      {% endif %}
+
+    </footer>
+  {% endif %}
+
+</article>
+{% endblock %}

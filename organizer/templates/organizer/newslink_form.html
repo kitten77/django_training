@@ -1,0 +1,17 @@
+{% extends parents_template|default:"organizer/base_organizer.html" %}
+
+{% block title %}
+{{ block.super }} - Link News Articel to Startup
+{% endblock %}
+
+{% block content %}
+<div>
+  <div>
+    <form action="{% url 'organizer_newslink_create' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+    <button type="submit"> Link Article </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
