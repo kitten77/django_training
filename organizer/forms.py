@@ -33,7 +33,7 @@ class TagForm(CleanSlugMixing, forms.ModelForm):
         return self.cleaned_data['name'].lower()
 
     def save(self):
-        new_tag = Tag.bjects.create(name = self.cleaned_data['name'], slug=self.cleaned_data['slug'])
+        new_tag = Tag.objects.create(name = self.cleaned_data['name'], slug=self.cleaned_data['slug'])
         return new_tag
 
 
