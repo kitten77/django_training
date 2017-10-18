@@ -10,7 +10,7 @@ class CleanSlugMixing:
         new_slug = (self.cleaned_data['slug'].lower())
         if new_slug == 'create':
             raise ValidationError('Slug can not be "create".')
-            return new_slug
+        return new_slug
 
 class NewsLinkForm(forms.ModelForm):
     class Meta:
@@ -23,7 +23,7 @@ class StartupForm(CleanSlugMixing, forms.ModelForm):
         fields = '__all__'
 
 
-class TagForm(CleanSlugMixing, forms.Form):
+class TagForm(CleanSlugMixing, forms.ModelForm):
     class Meta:
         model = Tag
         ##denne lar meg bestemme hvilke felt som skal være med i form
@@ -33,7 +33,7 @@ class TagForm(CleanSlugMixing, forms.Form):
         return self.cleaned_data['name'].lower()
 
     def save(self):
-        new_tag = Tag.objects.create(name = self.cleaned_data['name'], slug=self.cleaned_data['slug'])
+        new_tag = Tag.bjects.create(name = self.cleaned_data['name'], slug=self.cleaned_data['slug'])
         return new_tag
 
 
