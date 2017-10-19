@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import (TagCreate, StartupCreate, startup_detail, startup_list, tag_detail, tag_list, NewsLinkCreate,)
+from .views import TagCreate, StartupCreate, startup_detail, startup_list, tag_detail, tag_list, NewsLinkCreate
 # tag_create old tag_create form
 urlpatterns = [
     #url(r'^$', homepage),

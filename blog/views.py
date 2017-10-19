@@ -5,6 +5,10 @@ from .models import Post
 from .forms import PostForm
 
 # Create your views here.
+class PostUpdate(View):
+    form_class=PostForm
+    model = Post
+
 class PostList(View):
     template_name = ''
     def get(self, request):

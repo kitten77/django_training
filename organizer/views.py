@@ -1,4 +1,4 @@
-from django.shortcuts import (get_object_or_404, render)
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import View
 from .models import Startup, Tag
 from .forms import TagForm, StartupForm, NewsLinkForm
