@@ -1,56 +1,25 @@
-from django.shortcuts import (get_object_or_404, redirect, render)
+from django.shortcuts import (get_object_or_404, render)
 from django.views.generic import View
 from .models import Startup, Tag
 from .forms import TagForm, StartupForm, NewsLinkForm
+from .utils import ObjectCreateMixing
 # Create your views here.
 
-class TagCreate(View):
+class TagCreate(ObjectCreateMixing, View):
     form_class = TagForm
     template_name = 'organizer/tag_form.html'
 
-    def get(self, request):
-        return render(request, self.template_name, {'form': self.form_class()})
+class TagCreate(ObjectCreateMixing, View):
+    form_class = TagForm
+    template_name = 'organizer/tag_form.html'
 
-    def post(self, request):
-        bound_form = self.form_class(request.POST)
-        if bound_form.is_valid():
-            new_tag = bound_form.save()
-            return redirect(new_tag)
-        else:
-            return render(request, self.template_name, {'form': bound_form})
-
-class StartupCreate(View):
+class StartupCreate(ObjectCreateMixing, View):
     form_class = StartupForm
     template_name = 'organizer/startup_form.html'
 
-    def get(self, request):
-        return render(request, self.template_name, {'form': self.form_class})
-
-    def post(self, request):
-        bound_form = self.form_class(request.POST)
-
-        if bound_form.is_valid():
-            new_startup = bound_form.save()
-            return redirect(new_startup)
-        else:
-            return render(request, self.template_name, {'form': bound_form})
-
-class NewsLinkCreate(View):
+class NewsLinkCreate(ObjectCreateMixing, View):
     form_class = NewsLinkForm
     template_name = 'organizer/newslink_form.html'
-
-    def get(self, request):
-        return render(request, self.template_name, {'form': self.form_class})
-
-    def post(self, request):
-        bound_form = self.form_class(request.POST)
-
-        if bound_form.is_valid():
-            new_newslink = bound_form.save()
-            return redirect(new_newslink)
-        else:
-            return render(self.template_name, {'form': bound_form})
-
 
 
 def homepage(request):
