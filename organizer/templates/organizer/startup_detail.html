@@ -35,6 +35,13 @@
           {% endfor %}
         </ul>
       </section>
+    {% else %}
+      <section>
+        <h3> Recent News </h3>
+        <p>
+          <a href="{% url 'organizer_newslink_create' %}">Add article</a>
+        </p>
+      </section>
     {% endif %}
     {% if startup.blog_posts.all %}
       <section>
@@ -44,6 +51,13 @@
           <li><a href="">{{ post.title|title }} </a></li>
           {% endfor %}
         </ul>
+      </section>
+    {% else %}
+      <section>
+        <h3> Blog Post</h3>
+        <p>
+          <a href="{% url 'blog_post_create' %}"> create new blog post </a>
+        </p>
       </section>
     {% endif %}
   </article>
