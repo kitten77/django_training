@@ -46,11 +46,14 @@ class NewsLink(models.Model):
     # URL could be as big as 2000 characters
     link = models.URLField(max_length=255)
 
-    def __str__(self):
-        # pre python 3.6 return "{}:{}.format(self.startup, self.title)"
-        return f'{self.startup}:{self.title}'
-
     class Meta:
         verbose_name = 'news article'
         ordering = ['-pub_date']
         get_latest_by = 'pub_date'
+
+    def get_absolute_url(self):
+        return self.startup.get_absolute_url()
+
+    def __str__(self):
+        # pre python 3.6 return "{}:{}.format(self.startup, self.title)"
+        return f'{self.startup}:{self.title}'

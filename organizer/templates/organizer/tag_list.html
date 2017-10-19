@@ -6,6 +6,9 @@
 
 {% block content %}
 <h2>Tag List</h2>
+<div>
+  <a href="{% url 'organizer_tag_create' %}"> create a new tag </a>
+</div>
 <ul>
   {% for tag in tag_list %}
     <li>
