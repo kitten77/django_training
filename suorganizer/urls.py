@@ -24,7 +24,7 @@ from user import urls as user_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^user/', include(user_urls))
+    url(r'^user/', include(user_urls)),
     url(r'^$', redirect_root),
     url(r'^blog/', include(blog_urls)),
     url(r'^organizer/', include(organizer_urls)),
