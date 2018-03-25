@@ -19,10 +19,12 @@ from organizer import urls as organizer_urls
 from blog import urls as blog_urls
 from blog.views import PostList
 from .views import redirect_root
+from user import urls as user_urls
 #from organizer.views import homepage, tag_detail
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^user/', include(user_urls))
     url(r'^$', redirect_root),
     url(r'^blog/', include(blog_urls)),
     url(r'^organizer/', include(organizer_urls)),
