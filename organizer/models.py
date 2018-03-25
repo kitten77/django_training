@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 
 # Create your models here.
@@ -40,7 +40,7 @@ class Startup(models.Model):
 
 class NewsLink(models.Model):
     #foregin keys
-    startup = models.ForeignKey(Startup)
+    startup = models.ForeignKey('Startup', on_delete=models.CASCADE)
     title = models.CharField(max_length=63)
     pub_date = models.DateField('date published')
     # URL could be as big as 2000 characters
