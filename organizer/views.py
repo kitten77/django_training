@@ -21,6 +21,9 @@ class NewsLinkCreate(ObjectCreateMixing, View):
     form_class = NewsLinkForm
     template_name = 'organizer/newslink_form.html'
 
+class NewsLinkUpdate(View):
+    form_class = NewsLinkForm
+    template_name = 'organizer/newslink_form_update.html'
 
 def homepage(request):
     return render(request, 'organizer/tag_list.html', {'tag_list': Tag.objects.all()})
