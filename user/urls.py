@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import RedirectView
 
-app_name='user'
+app_name='dj-auth'
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(pattern_name='dj-auth:login', permanent=False)),

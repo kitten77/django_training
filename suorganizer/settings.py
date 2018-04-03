@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['localhost', 'suorganizer.h.l9', 'organizer.h.l9']
 
 
 # Application definition
+## 'user', is not complete
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'user',
     'organizer',
     'blog',
     'contactus',

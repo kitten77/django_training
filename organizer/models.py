@@ -57,6 +57,9 @@ class NewsLink(models.Model):
     def get_update_url(self):
         return reverse('organizer_newslink_update', kwargs={'pk': self.pk})
 
+    def get_delete_url(self):
+        return reverse('organizer_newslink_delete', kwargs={'pk': self.pk})
+
     def __str__(self):
         # pre python 3.6 return "{}:{}.format(self.startup, self.title)"
         return f'{self.startup}:{self.title}'
