@@ -24,7 +24,9 @@ from user import urls as user_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^user/', include(user_urls, app_name='user', namespace='dj-auth')),
+    ##deprecated in django 2.0 now app_name is set inside app.urls.py
+    #url(r'^user/', include(user_urls, app_name='user', namespace='dj-auth')),
+    url(r'^user/', include(user_urls)),
     url(r'^$', redirect_root),
     url(r'^blog/', include(blog_urls)),
     url(r'^organizer/', include(organizer_urls)),

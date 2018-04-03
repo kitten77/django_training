@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import PostUpdate, PostList, post_detail, PostCreate
+from .views import PostUpdate, PostList, post_detail, PostCreate, PostDelete
 
 #PostList.as_view() points too views.PostList.get()
 urlpatterns = [

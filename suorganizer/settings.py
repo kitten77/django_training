@@ -26,7 +26,7 @@ SECRET_KEY = 'vp7an7hf^28kqv%phdjl$2bx__nl*vvm91koog6c=iz-%j_gj^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['suorganizer.h.l9', 'organizer.h.l9']
+ALLOWED_HOSTS = ['localhost', 'suorganizer.h.l9', 'organizer.h.l9']
 
 
 # Application definition
