@@ -46,12 +46,10 @@ class ObjectUpdateMixin:
     def post(self, request, slug):
         obj = get_object_or_404(self.model, slug__iexact=slug)
         bound_form = self.form_class(request.POST, instance=obj)
+        
         if bound_form.is_valid():
             new_object = bound_form.save()
             return redirect(new_object)
         else:
             context = {'form': bound_form, self.model.__name__.lower(): obj,}
-            return render(
-                request,
-                self.template_name,
-                context)
+            return render(request, self.template_name, context)
