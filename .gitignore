@@ -50,5 +50,8 @@ coverage.xml
 *.log
 *.pot
 
+# ignoring my .old stuff
+*.old
+
 # Sphinx documentation
 docs/_build/
