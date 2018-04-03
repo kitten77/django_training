@@ -6,6 +6,10 @@
 
 {% block content %}
 <h2> {{ tag.name|title }}</h2>
+  <ul>
+    <li><a href="{{ tag.get_update_url }}">Edit Tag</a></li>
+    <li><a href="{{ tag.get_delete_url }}">Delete Tag</a></li>
+</ul>
 {% if tag.startup_set.all %}
   <section>
     <h3>Startup{{ tag.startup_set.count|pluralize }}</h3>
@@ -15,9 +19,8 @@
       </p>
     <ul>
       {% for startup in tag.startup_set.all %}
-        <li><a href="{{ startup.get_absolute_url }}">
-          {{ startup.name }}
-        </a></li>
+        <li><a href="{{ startup.get_absolute_url }}">{{ startup.name }}</a></li>
+
       {% endfor %}
     </ul>
   </section>

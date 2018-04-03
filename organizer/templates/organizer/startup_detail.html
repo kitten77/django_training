@@ -7,6 +7,9 @@
 {% block content %}
 <article>
   <h2>{{ startup.name }}</h2>
+    <ul>
+      <li><a href="{{ startup.get_update_url }}">Edit Startup</a></li>
+    </ul>
   <dl>
     <dt> Date Founded </dt>
       <dd> {{ startup.founded_date|date:"F jS, Y" }} </dd>
@@ -31,7 +34,11 @@
         </p>
         <ul>
           {% for newslink in startup.newslink_set.all %}
-            <li><a href="{{ newslink.link }}"> {{ newslink.title|title }} </a></li>
+            <li><a href="{{ newslink.link }}"> {{ newslink.title|title }} </a>
+              <ul>
+                <li><a href="{{ newslink.get_update_url }}">Edit Link</a></li>
+              </ul>
+            </li>
           {% endfor %}
         </ul>
       </section>
